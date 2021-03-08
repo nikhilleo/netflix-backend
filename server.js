@@ -1,11 +1,12 @@
 
 
 require("dotenv").config();
-require("../netflix-server/Database/database");
+require("./Database/database");
 const express = require('express');
 const app = express();
 const morgan = require("morgan");
-const port = process.env.PORT
+const port = process.env.PORT || 8080;
+console.log(port);
 const cors = require("cors");
 const trending_routes = require("./routes/trending");
 const original_routes = require("./routes/originals");
