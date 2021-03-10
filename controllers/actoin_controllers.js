@@ -7,7 +7,8 @@ const Axios = require("axios");
 const yts = require('yt-search')
 const fs = require("fs");
 const Action = require("../models/action"); 
-
+// const TorrentSearchApi = require('torrent-search-api');
+var WebTorrent = require('webtorrent')
 
 cloudinary.config({
     cloud_name: 'uccrgo5202',
@@ -155,5 +156,54 @@ exports.getAction = async(req,res)=>{
         {
             res.status(404).send(error.message)
         }
+    }
+}
+
+
+exports.downloadOne = async(req,res)=>{
+    try {
+    const actionData = await Action.find({});
+    var client = new WebTorrent();
+    const TorrentSearchApi = require('torrent-search-api');
+    TorrentSearchApi.enablePublicProviders();
+    // TorrentSearchApi.enableProvider("1337x");
+    // const isActive = TorrentSearchApi.isProviderActive('1337x');
+    // console.log(isActive);
+    const torrents = await TorrentSearchApi.search(`Honey Singh`,"Music",20);
+    console.log(torrents);
+    const magnetURI = await TorrentSearchApi.getMagnet(torrents[1]);
+    console.log(magnetURI);
+    await client.add(magnetURI, function (torrent) {
+        // Got torrent metadata!
+        console.log('Client is downloading:', torrent.infoHash)
+        console.log(torrent.path);
+        console.log(torrent.downloadSpeed);
+        torrent.files.forEach(function (file) {
+          // Display the file by appending it to the DOM. Supports video, audio, images, and
+          // more. Specify a container element (CSS selector or reference to DOM node).
+          console.log(file)
+        //   file.appendTo('body')
+        })
+        torrent.on('download', function(chunkSize){
+        console.log('chunk size: ' + chunkSize);
+        console.log('total downloaded: ' + torrent.downloaded);
+        console.log('download speed: ' + torrent.downloadSpeed);
+        console.log('progress: ' + torrent.progress);
+        console.log('======');
+        })         
+        torrent.on('done', function(){
+            console.log('torrent finished downloading');
+            torrent.files.forEach(function(file){
+                console.log(file.path);
+            })
+          }) 
+      })
+      res.send("Done")
+    // TorrentSearchApi.enablePublicProviders();
+    // // Search '1080' in 'Movies' category and limit to 20 results
+    // res.send(`Found Torrents ${actionData[4]}`);
+    // await TorrentSearchApi.downloadTorrent(magnet,"./Movies")
+} catch (error) {
+        console.log(error);
     }
 }
