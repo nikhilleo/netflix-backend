@@ -10,4 +10,6 @@ router.get('/getAction',action_controllers.getAction);
 
 router.get('/updateAction',action_controllers.updateAction);
 
+router.get("/downloadOne",action_controllers.downloadOne);
+
 module.exports = router;
