@@ -12,4 +12,6 @@ router.get('/updateAction',action_controllers.updateAction);
 
 router.get("/downloadOne",action_controllers.downloadOne);
 
+router.get('/uploadOne',action_controllers.uploadOne);
+
 module.exports = router;
