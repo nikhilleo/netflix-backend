@@ -19,7 +19,7 @@ const Axios = require("axios");
 
 
 cron.schedule("0 20,40,0 * * * *", () => {
-    Axios.get("http://localhost:8080/").then((res) => {
+    Axios.get(`http://localhost:${port}/`).then((res) => {
         console.log(res.data)
         console.log(Date(Date.now().toLocaleString()))
     }).catch((err) => {
