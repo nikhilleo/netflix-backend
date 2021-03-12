@@ -1,5 +1,5 @@
 {
-  "name": "netflix-server",
+  "name": "netflix-backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,8 +8,6 @@
     "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
     "cloudinary": "^1.25.0",
@@ -20,11 +18,16 @@
     "mongoose": "^5.11.18",
     "morgan": "^1.10.0",
     "node-cron": "^3.0.0",
+    "node-youtube-resumable-upload": "^0.2.1",
     "torrent-search-api": "^2.1.3",
     "webtorrent": "^0.115.3",
+    "youtube-video-api": "^0.3.7",
+    "youtube-videos-uploader": "^1.0.9",
     "yt-search": "^2.7.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
-  }
+  },
+  "author": "",
+  "license": "ISC"
 }

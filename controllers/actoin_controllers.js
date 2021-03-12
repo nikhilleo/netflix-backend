@@ -301,18 +301,3 @@ exports.uploadOne = async (req, res) => {
 // }
 
 
-
-
-// Client Id = 389309325673-l25uor6bjgtlhtj7ptqi2ks1a5lpdblg.apps.googleusercontent.com
-// Client Secret = xdCcac2c7ZKo4G0K7e9pn-mT
-
-// {
-//     "web": {
-//         "client_id": "389309325673-l25uor6bjgtlhtj7ptqi2ks1a5lpdblg.apps.googleusercontent.com",
-//         "project_id": "netflix-1008",
-//         "client_secret": "xdCcac2c7ZKo4G0K7e9pn-mT"
-//         "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-//         "token_uri": "https://oauth2.googleapis.com/token",
-//         "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-//     }
-// }
