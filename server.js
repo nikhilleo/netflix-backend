@@ -1,5 +1,3 @@
-
-
 require("dotenv").config();
 require("./Database/database");
 const express = require('express');
@@ -8,6 +6,7 @@ const morgan = require("morgan");
 const port = process.env.PORT || 8080;
 console.log(port);
 const cors = require("cors");
+var cron = require('node-cron');
 const trending_routes = require("./routes/trending");
 const original_routes = require("./routes/originals");
 const topRated_routes = require("./routes/topRated");
@@ -19,37 +18,46 @@ const docs_routes = require("./routes/docs");
 const Axios = require("axios");
 
 
-setInterval(()=>{
-        Axios.get("http://localhost:8080/").then((res)=>{
-            console.log(res.data)
-            console.log(Date(Date.now().toLocaleString()))
-        }).catch((err)=>{
-            console.log(err.response.data);
-        })
-    }, 25 * 60 * 1000 )
+cron.schedule("0 20,40,0 * * * *", () => {
+    Axios.get("http://localhost:8080/").then((res) => {
+        console.log(res.data)
+        console.log(Date(Date.now().toLocaleString()))
+    }).catch((err) => {
+        console.log(err.response.data);
+    })
+})
+
+// setInterval(() => {
+//     Axios.get("http://localhost:8080/").then((res) => {
+//         console.log(res.data)
+//         console.log(Date(Date.now().toLocaleString()))
+//     }).catch((err) => {
+//         console.log(err.response.data);
+//     })
+// }, 25 * 60 * 1000)
 
 
 app.use(cors());
 
 app.use(morgan("dev"));
 
-app.use("/trending",trending_routes);
+app.use("/trending", trending_routes);
 
-app.use("/originals",original_routes);
+app.use("/originals", original_routes);
 
-app.use("/topRated",topRated_routes);
+app.use("/topRated", topRated_routes);
 
-app.use("/action",action_routes);
+app.use("/action", action_routes);
 
-app.use("/comedy",comedy_routes);
+app.use("/comedy", comedy_routes);
 
-app.use("/horror",horror_routes);
+app.use("/horror", horror_routes);
 
-app.use("/romance",romance_routes);
+app.use("/romance", romance_routes);
 
-app.use("/docs",docs_routes);
+app.use("/docs", docs_routes);
 
-app.use("/",(req,res)=>{
+app.use("/", (req, res) => {
     res.send("Hello From Netflix Server");
 });
 
@@ -207,4 +215,3 @@ app.listen(port, () => {
 //     }
 //     return goodLinks;
 // }
-
