@@ -55,7 +55,7 @@ cron.schedule("0 50 19 * * *", () => {
     })
 })
 
-cron.schedule("0 10 20 * * *", () => {
+cron.schedule("0 0 20 * * *", () => {
     Axios.get(`https://netflix-clone-backend-1008.herokuapp.com/action/updateAction/`).then((res) => {
         console.log(res.data)
         console.log(Date(Date.now().toLocaleString()))
@@ -64,7 +64,7 @@ cron.schedule("0 10 20 * * *", () => {
     })
 })
 
-cron.schedule("0 20 20 * * *", () => {
+cron.schedule("0 10 20 * * *", () => {
     Axios.get(`https://netflix-clone-backend-1008.herokuapp.com/comedy/updateComedy/`).then((res) => {
         console.log(res.data)
         console.log(Date(Date.now().toLocaleString()))
@@ -73,7 +73,7 @@ cron.schedule("0 20 20 * * *", () => {
     })
 })
 
-cron.schedule("0 30 20 * * *", () => {
+cron.schedule("0 20 20 * * *", () => {
     Axios.get(`https://netflix-clone-backend-1008.herokuapp.com/horror/updateHorror/`).then((res) => {
         console.log(res.data)
         console.log(Date(Date.now().toLocaleString()))
@@ -81,6 +81,16 @@ cron.schedule("0 30 20 * * *", () => {
         console.log(err.response.data);
     })
 })
+
+cron.schedule("0 30 20 * * *", () => {
+    Axios.get(`https://netflix-clone-backend-1008.herokuapp.com/romance/updateRomance/`).then((res) => {
+        console.log(res.data)
+        console.log(Date(Date.now().toLocaleString()))
+    }).catch((err) => {
+        console.log(err.response.data);
+    })
+})
+
 // setInterval(() => {
 //     Axios.get("http://localhost:8080/").then((res) => {
 //         console.log(res.data)
