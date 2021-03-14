@@ -64,7 +64,7 @@ cron.schedule("0 0 17 * * *", () => {
     })
 })
 
-cron.schedule("0 10 20 * * *", () => {
+cron.schedule("0 10 17 * * *", () => {
     Axios.get(`https://netflix-clone-backend-1008.herokuapp.com/comedy/updateComedy/`).then((res) => {
         console.log(res.data)
         console.log(Date(Date.now().toLocaleString()))
