@@ -18,7 +18,7 @@ const docs_routes = require("./routes/docs");
 const Axios = require("axios");
 
 
-cron.schedule("0 20,40,0 * * * *", () => {
+cron.schedule("0 20,40,0 2-18 * * *", () => {
     Axios.get(`https://netflix-clone-backend-1008.herokuapp.com/`).then((res) => {
         console.log(res.data)
         console.log(Date(Date.now().toLocaleString()))
