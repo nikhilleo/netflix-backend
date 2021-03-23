@@ -16,7 +16,29 @@ const horror_routes = require("./routes/horror");
 const romance_routes = require("./routes/romance");
 const docs_routes = require("./routes/docs");
 const Axios = require("axios");
+const passport = require("passport");
+const session = require('express-session')
+const MongoStore = require("connect-mongo");
 
+
+app.use(session({
+    secret: 'asg4398ut348jvi23n39bnasun122gtrqw9gj534754a745s7n457g54u745',
+    resave: false,
+    saveUninitialized: false,
+    store:  MongoStore.create({
+        mongoUrl:process.env.MONGO_URL,
+        autoRemove:true
+    })
+    // cookie: { secure: true }
+}))
+
+require("./controllers/passport")(passport);
+
+app.use(passport.initialize());
+
+app.use(passport.session());
+
+app.use('/auth',require("./routes/auth"));
 
 cron.schedule("0 20,40,0 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18 * * *", () => {
     Axios.get(`https://netflix-clone-backend-1008.herokuapp.com/`).then((res) => {
