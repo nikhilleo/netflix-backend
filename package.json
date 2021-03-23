@@ -1,40 +1,41 @@
-
 {
   "name": "netflix-backend",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-          "start": "node server.js",
-          "dev": "nodemon server.js",
-          "test": "echo \"Error: no test specified\" && exit 1"
-        },
-        "engines": {
-          "node": "10.19.0",
-          "npm": ">= 7.5.4"
-        },
-        "dependencies": {
-              "axios": "^0.21.1",
-              "cloudinary": "^1.25.0",
-              "cors": "^2.8.5",
-              "dotenv": "^8.2.0",
-              "express": "^4.17.1",
-              "image-downloader": "^4.0.2",
-              "mongoose": "^5.11.18",
-              "morgan": "^1.10.0",
-              "node-cron": "^3.0.0",
-              "node-youtube-resumable-upload": "^0.2.1",
-              "torrent-search-api": "^2.1.3",
-              "webtorrent": "^0.115.3",
-              "youtube-video-api": "^0.3.7",
-              "youtube-videos-uploader": "^1.0.9",
-              "yt-search": "^2.7.3"
-            },
-            "devDependencies": {
-              "nodemon": "^2.0.7"
-            },
-    "author": "",
-    "license": "ISC"
-
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "10.19.0",
+    "npm": ">= 7.5.4"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cloudinary": "^1.25.0",
+    "connect-mongo": "^4.4.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "image-downloader": "^4.0.2",
+    "mongoose": "^5.11.18",
+    "morgan": "^1.10.0",
+    "node-cron": "^3.0.0",
+    "node-youtube-resumable-upload": "^0.2.1",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "torrent-search-api": "^2.1.3",
+    "webtorrent": "^0.115.3",
+    "youtube-video-api": "^0.3.7",
+    "youtube-videos-uploader": "^1.0.9",
+    "yt-search": "^2.7.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "author": "",
+  "license": "ISC"
 }
-
