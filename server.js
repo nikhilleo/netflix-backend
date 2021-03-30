@@ -22,7 +22,7 @@ const MongoStore = require("connect-mongo");
 
 app.use(cors());
 
-require("./config/passport")(passport);
+require("./controllers/passport")(passport);
 
 app.use(session({
     secret: 'sadmgieqwm89jhtg8we4hn83409yhn734htttwenh02nh4sgasga43sdhasa2asas9jgvsd9nb8dssdbn2h924n',
