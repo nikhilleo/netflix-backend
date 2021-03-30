@@ -20,19 +20,20 @@ const passport = require("passport");
 const session = require('express-session')
 const MongoStore = require("connect-mongo");
 
+app.use(cors());
+
+require("./config/passport")(passport);
 
 app.use(session({
-    secret: 'asg4398ut348jvi23n39bnasun122gtrqw9gj534754a745s7n457g54u745',
+    secret: 'sadmgieqwm89jhtg8we4hn83409yhn734htttwenh02nh4sgasga43sdhasa2asas9jgvsd9nb8dssdbn2h924n',
     resave: false,
     saveUninitialized: false,
     store:  MongoStore.create({
-        mongoUrl:process.env.MONGO_URL,
+        mongoUrl:"mongodb://127.0.0.1:27017/oAuth-Stories",
         autoRemove:true
     })
     // cookie: { secure: true }
 }))
-
-require("./controllers/passport")(passport);
 
 app.use(passport.initialize());
 
@@ -40,7 +41,7 @@ app.use(passport.session());
 
 app.use('/auth',require("./routes/auth"));
 
-cron.schedule("0 20,40,0 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18 * * *", () => {
+cron.schedule("0 20,40,0 * * * *", () => {
     Axios.get(`https://netflix-clone-backend-1008.herokuapp.com/`).then((res) => {
         console.log(res.data)
         console.log(Date(Date.now().toLocaleString()))
@@ -132,7 +133,6 @@ cron.schedule("0 40 17 * * *", () => {
 // }, 25 * 60 * 1000)
 
 
-app.use(cors());
 
 app.use(morgan("dev"));
 
